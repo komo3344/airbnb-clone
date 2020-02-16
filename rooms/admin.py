@@ -26,6 +26,8 @@ class ItemAdmin(admin.ModelAdmin):
 
 class PhotoInline(admin.TabularInline):
     model = models.Photo
+    classes = ["collapse"]
+    extra = 1
 
 
 @admin.register(models.Room)
@@ -93,4 +95,5 @@ class RoomAdmin(admin.ModelAdmin):
 
     def count_photos(self, obj):
         return obj.photos.count()
+    count_photos.short_description = "Count Photos"
 

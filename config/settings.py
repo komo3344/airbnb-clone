@@ -49,7 +49,7 @@ PROJECT_APP = [
     "conversations",
 ]
 
-THIRD_PARTY_APP = ["django_countries"]
+THIRD_PARTY_APP = ["django_countries", "django_seed"]
 
 INSTALLED_APPS = DJAGNO_APPS + PROJECT_APP + THIRD_PARTY_APP
 
@@ -119,7 +119,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

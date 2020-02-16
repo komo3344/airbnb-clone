@@ -6,6 +6,8 @@ from rooms import models as rooms_models
 
 class RoomInline(admin.StackedInline):
     model = rooms_models.Room
+    extra = 1
+    classes = ["collapse"]
 
 
 @admin.register(models.User)
@@ -33,4 +35,3 @@ class CustomUserAdmin(UserAdmin):
 
     list_display = ("username", "email", "gender", "language", "currency", "superhost")
     list_filter = UserAdmin.list_filter + ("superhost",)
-
