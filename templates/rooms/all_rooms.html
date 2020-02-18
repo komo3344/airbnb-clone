@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block page_name %}
+    HOME
+{% endblock page_name%}
+
+{% block content %}
+    {% for room in rooms %}
+        <h1>{{room.name}} - ${{room.price}}</h1>
+    {% endfor %}
+
+    <h5>page {{page}} of {{page_count}}</h5>
+
+{% if page is not 1 %}
+    <a href="?page={{page | add:-1}}">Previus</a>
+{% endif %}
+    <a href="?page={{page}}">{{page}}</a>
+{% if not page_count %}
+    <a href="?page={{page | add:1}}">Next</a>
+{% endif %}
+{% endblock content %}
