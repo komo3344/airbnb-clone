@@ -4,17 +4,23 @@
 {% endblock page_name%}
 
 {% block content %}
-    {% for room in rooms %}
+    {% for room in page.object_list %}
         <h1>{{room.name}} - ${{room.price}}</h1>
     {% endfor %}
 
-    <h5>page {{page}} of {{page_count}}</h5>
+    {% comment %} django template에서 함수 호출방법
+                page.has_next 자동으로 함수호출 .has_next() X  
+    {% endcomment %}
+    <h5>
+    {% if page.has_previous%} 
+        <a href="?page={{page.previous_page_number }}">Previous</a>
+    {% endif %}
 
-{% if page is not 1 %}
-    <a href="?page={{page | add:-1}}">Previus</a>
-{% endif %}
-    <a href="?page={{page}}">{{page}}</a>
-{% if not page_count %}
-    <a href="?page={{page | add:1}}">Next</a>
-{% endif %}
+    Page {{page.number}} of {{page.paginator.num_pages}}
+    
+    {% if page.has_next %}
+        <a href="?page={{page.next_page_number }}">Next</a>
+    {% endif %}
+
+    </h5>
 {% endblock content %}

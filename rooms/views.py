@@ -1,23 +1,18 @@
-from math import ceil
-from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage
+from django.shortcuts import render, redirect
 from . import models
 
 
 def all_rooms(request):
-    page = request.GET.get("page", 1)  # default 1
-    page = int(page or 1)  # 빈 페이지 에러 해결
-    pagesize = 10
-    limit = pagesize * page
-    offset = limit - pagesize
-    all_rooms = models.Room.objects.all()[offset:limit]
-    page_count = ceil(models.Room.objects.count() / pagesize)
-    return render(
-        request,
-        "rooms/all_rooms.html",
-        context={
-            "rooms": all_rooms,
-            "page": page,
-            "page_count": page_count,
-            "page_range": range(1, page_count),
-        },
-    )
+    page = request.GET.get("page", 1)
+    room_list = models.Room.objects.all()
+    paginator = Paginator(
+        room_list, 10, orphans=5
+    )  # 5와 같거나 작으면 이전페이지에서 보여줌 6이상이면 다음페이지에서 보여줌
+
+    try:
+        rooms = paginator.page(int(page))
+        return render(request, "rooms/all_rooms.html", {"page": rooms})
+    except EmptyPage:
+        return redirect("/")
+
