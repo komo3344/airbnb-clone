@@ -6,9 +6,13 @@
 {% block content %}
 
     {{now}}
-    
+
     {% for room in rooms %}
-        <h1>{{room.name}} - ${{room.price}}</h1>
+        <h3>
+            <a href="{% url "rooms:detail" room.pk %}">
+                {{room.name}} / ${{room.price}}
+            </a>
+        </h3>
     {% endfor %}
 
     {% comment %} django template에서 함수 호출방법
