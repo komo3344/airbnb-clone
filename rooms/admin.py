@@ -43,6 +43,7 @@ class RoomAdmin(admin.ModelAdmin):
                     ("country", "city"),
                     "price",
                     "address",
+                    "room_type",
                 )
             },
         ),
@@ -95,5 +96,6 @@ class RoomAdmin(admin.ModelAdmin):
 
     def count_photos(self, obj):
         return obj.photos.count()
+
     count_photos.short_description = "Count Photos"
 
