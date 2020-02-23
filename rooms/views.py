@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
+from django_countries import countries
 from django.shortcuts import render
-from django.http import Http404
 from . import models
 
 
@@ -28,3 +28,14 @@ class RoomDetail(DetailView):
     """ RoomDetail Definition """
 
     model = models.Room
+
+
+def Search(request):
+    city = request.GET.get("city", "Anywhere")
+    city = str.capitalize(city)
+    room_types = models.RoomType.objects.all()
+    return render(
+        request,
+        "rooms/search.html",
+        context={"city": city, "countries": countries, "room_types": room_types},
+    )
