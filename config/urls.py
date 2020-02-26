@@ -22,6 +22,7 @@ urlpatterns = [
     # include안에 namespace작성하려면 app_name이 있어야함
     path("", include("core.urls", namespace="core")),
     path("rooms/", include("rooms.urls", namespace="rooms")),
+    path("users/", include("users.urls", namespace="users")),
     path("admin/", admin.site.urls),
 ]
 
