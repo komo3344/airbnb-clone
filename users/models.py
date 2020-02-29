@@ -30,7 +30,11 @@ class User(AbstractUser):
     )
     avatar = models.ImageField(blank=True, upload_to="avatar_photos")
     bio = models.TextField(blank=True)
-    currency = models.CharField(choices=CURRENCY_CHOICES, max_length=3, blank=True)
-    language = models.CharField(choices=LANGUAGE_CHOICES, max_length=2, blank=True)
+    language = models.CharField(
+        choices=LANGUAGE_CHOICES, max_length=2, blank=True, default=LANGUAGE_KOREAN
+    )
+    currency = models.CharField(
+        choices=CURRENCY_CHOICES, max_length=3, blank=True, default=CURRENCY_KRW
+    )
     birthdate = models.DateField(blank=True, null=True)
     superhost = models.BooleanField(default=False)
