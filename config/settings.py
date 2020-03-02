@@ -125,8 +125,11 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "/static/"  # 서버 url
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]  # 디렉토리 STATIC_URL에 가면 접근할 수 있는 파일을 보여줌
 AUTH_USER_MODEL = "users.User"
 
 
