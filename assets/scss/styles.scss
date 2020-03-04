@@ -25,5 +25,10 @@
       @apply outline-none border-teal-500;
     }
   }
-  
+
+form {
+    input {
+      @apply mb-3;
+    }
+}
 @tailwind utilities;
