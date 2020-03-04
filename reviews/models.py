@@ -25,11 +25,13 @@ class Review(core_models.TimestampedModel):
 
     def rating_average(self):
         avg = (
-            self.check_in
+            self.accuracy
             + self.communication
-            + self.accuracy
-            + self.location
             + self.cleanliness
+            + self.location
+            + self.check_in
             + self.value
         ) / 6
         return round(avg, 2)
+
+    rating_average.short_description = "Avg."
