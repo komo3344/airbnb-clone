@@ -14,8 +14,6 @@ class BookedDay(core_models.TimestampedModel):
         verbose_name = "Booked Day"
         verbose_name_plural = "Booked Days"
 
-    objects = managers.CustomReservationManager()
-
     def __str__(self):
         return str(self.day)
 
@@ -41,6 +39,7 @@ class Reservation(models.Model):
     )
     guest = models.ForeignKey("users.User", on_delete=models.CASCADE)
     room = models.ForeignKey("rooms.Room", on_delete=models.CASCADE)
+    objects = managers.CustomReservationManager()
 
     def __str__(self):
         return f"{self.room} - {self.check_in}"
