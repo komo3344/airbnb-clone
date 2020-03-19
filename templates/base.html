@@ -1,6 +1,7 @@
 {% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang={{ LANGUAGE_CODE }}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,7 +36,9 @@
         const langSelect = document.getElementById("js-lang");
         const handleLangChange = () => {
             const selected = langSelect.value;
-            fetch(`{% url 'users:switch-language' %}?lang=${selected}`).then(() => window.location.reload());
+            console.log(selected)
+            fetch(`{% url 'users:switch-language' %}?lang=${selected}`)
+            .then(() => window.location.reload());
         }
         langSelect.addEventListener("change", handleLangChange);
     </script>
