@@ -1,4 +1,5 @@
 import uuid
+from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -16,15 +17,18 @@ class User(AbstractUser):
     GENDER_OTHER = "other"
 
     GENDER_CHOICES = (
-        (GENDER_MALE, "Male"),
-        (GENDER_FEMALE, "Female"),
-        (GENDER_OTHER, "Other"),
+        (GENDER_MALE, _("Male")),
+        (GENDER_FEMALE, _("Female")),
+        (GENDER_OTHER, _("Other")),
     )
 
     LANGUAGE_ENGLISH = "en"
     LANGUAGE_KOREAN = "kr"
 
-    LANGUAGE_CHOICES = ((LANGUAGE_ENGLISH, "EN"), (LANGUAGE_KOREAN, "KR"))
+    LANGUAGE_CHOICES = (
+        (LANGUAGE_ENGLISH, _("English")),
+        (LANGUAGE_KOREAN, _("Korean")),
+    )
 
     CURRENCY_USD = "usd"
     CURRENCY_KRW = "krw"
@@ -41,12 +45,16 @@ class User(AbstractUser):
         (LOGIN_KAKAO, "kakao"),
     )
     gender = models.CharField(
-        choices=GENDER_CHOICES, max_length=10, null=True, blank=True
+        _("gender"), choices=GENDER_CHOICES, max_length=10, null=True, blank=True
     )
     avatar = models.ImageField(blank=True, upload_to="avatar_photos")
-    bio = models.TextField(blank=True)
+    bio = models.TextField(_("bio"), blank=True)
     language = models.CharField(
-        choices=LANGUAGE_CHOICES, max_length=2, blank=True, default=LANGUAGE_KOREAN
+        _("language"),
+        choices=LANGUAGE_CHOICES,
+        max_length=2,
+        blank=True,
+        default=LANGUAGE_KOREAN,
     )
     currency = models.CharField(
         choices=CURRENCY_CHOICES, max_length=3, blank=True, default=CURRENCY_KRW
@@ -70,7 +78,7 @@ class User(AbstractUser):
                 "emails/verify_email.html", {"secret": secret}
             )
             send_mail(
-                "Verify Airbnb Account",
+                -("Verify Airbnb Account"),
                 strip_tags(html_message),  # html message를 text message로 하기 위해서
                 settings.EMAIL_FROM,
                 [self.email],
