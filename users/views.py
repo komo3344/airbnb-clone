@@ -279,7 +279,6 @@ def switch_hosting(request):
 
 def switch_language(request):
     lang = request.GET.get("lang", None)
-
     if lang is not None:
         request.session[translation.LANGUAGE_SESSION_KEY] = lang
     return HttpResponse(status=200)
