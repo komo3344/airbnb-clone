@@ -2,6 +2,7 @@ import datetime
 from django.http import Http404
 from django.views.generic import View
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse
 from rooms import models as room_models
 from reviews import forms as review_forms
@@ -11,7 +12,7 @@ from . import models
 class CreateError(Exception):
     pass
 
-
+@login_required
 def create(request, room, year, month, day):
     try:
         date_obj = datetime.datetime(year, month, day)
@@ -47,7 +48,7 @@ class ReservationDetailView(View):
             {"reservation": reservation, "form": form},
         )
 
-
+@login_required
 def edit_reservation(request, pk, verb):
     reservation = models.Reservation.objects.get_or_none(pk=pk)
     if not reservation or (
