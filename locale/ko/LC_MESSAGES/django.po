@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-20 15:39+0900\n"
+"POT-Creation-Date: 2020-09-21 17:17+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgstr "방 생성"
 
 #: templates/partials/nav.html:17
 msgid "Favs"
-msgstr "찜"
+msgstr "찜 목록"
 
 #: templates/partials/nav.html:18
 msgid "Profile"
@@ -64,7 +64,7 @@ msgstr "회원가입"
 
 #: templates/rooms/room_detail.html:35
 msgid "Remove from Favourites"
-msgstr "찜 제거"
+msgstr "찜 제거하기"
 
 #: templates/rooms/room_detail.html:37
 msgid "Save to Favourites"
@@ -77,7 +77,7 @@ msgstr ""
 
 #: users/mixins.py:13
 msgid "Can't go there"
-msgstr ""
+msgstr "그 곳으로 갈 수 없습니다."
 
 #: users/models.py:21
 msgid "Male"

@@ -6,10 +6,6 @@ verify_ssl = true
 [dev-packages]
 flake8 = "*"
 black = "*"
-<<<<<<< HEAD
-awsebcli = "*"
-=======
->>>>>>> 0929416aca644ec91cbc460c58808f4339838420
 
 [packages]
 django-countries = "==6.1"
