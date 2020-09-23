@@ -40,7 +40,7 @@ urllib3 = "==1.25.8"
 virtualenv-clone = "==0.5.3"
 virtualenv = "==20.0.13"
 zipp = "==3.1.0"
-Django = "==3.0.4"
+Django = "==2.2.5"
 Pillow = "==7.0.0"
 Faker = "==4.0.2"
 
